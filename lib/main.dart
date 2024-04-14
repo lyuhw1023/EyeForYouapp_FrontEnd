@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:app_eyeforyou/explain_main.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
@@ -118,7 +119,11 @@ class CameraAppState extends State<CameraApp> {
         centerTitle: true,
         actions: [
           IconButton(//CameraAppState
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ExplainMain()),
+              );
+            },
             icon: Icon(Icons.question_mark_rounded),
           )
         ],
