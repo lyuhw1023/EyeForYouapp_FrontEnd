@@ -1,126 +1,130 @@
 import 'dart:io';
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
+import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:app_eyeforyou/explain_main.dart';
+import 'package:app_eyeforyou/benefit.dart';
 
 // 사용가능한 카메라 장치의 목록을 저장하는 변수
 late List<CameraDescription> _cameras;
 
 Future<void> main() async {
-  // 앱이 실행되기 전에 필요한 초기화 작업을 수행하는 메소드
-  // 사용가능한 카메라를 확인
-  WidgetsFlutterBinding.ensureInitialized();
-
   // 사용 가능한 카메라 확인
+  WidgetsFlutterBinding.ensureInitialized();
   _cameras = await availableCameras();
 
-  runApp(
-      MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: Scaffold(
-            body: SafeArea(child: CameraApp()),
-          )
-      ));
+  runApp(MyApp());
 }
 
-//메인화면
-class CameraApp extends StatefulWidget {
-  // Default Constructor
-  const CameraApp({super.key});
-
+class MyApp extends StatelessWidget {
   @override
-  State<CameraApp> createState() => CameraAppState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CameraApp(),
+    );
+  }
 }
 
-class CameraAppState extends State<CameraApp> {
-  // 카메라 컨트롤러 인스턴스 생성
-  late CameraController controller;
+class CameraApp extends StatefulWidget {
+  @override
+  _CameraAppState createState() => _CameraAppState();
+}
+
+class _CameraAppState extends State<CameraApp> {
+  late CameraController _controller;
+  late CameraDescription firstCamera;
 
   @override
   void initState() {
     super.initState();
-    // 카메라 컨트롤러 초기화
-    // _cameras[0] : 사용 가능한 첫번째 카메라
-    // Resulutionpreset : 사진 품질
-    // enableAudio : 오디오 녹음 여부
-    controller =
-        CameraController(_cameras[0], ResolutionPreset.max, enableAudio: false);
-
-    controller.initialize().then((_) {
-      // 카메라가 작동되지 않을 경우
+    firstCamera = _cameras.first;
+    _controller = CameraController(
+      firstCamera,
+      ResolutionPreset.medium,
+      enableAudio: false,
+    );
+    _controller.initialize().then((_) {
       if (!mounted) {
         return;
       }
-      // 카메라가 작동될 경우
-      setState(() {
-        // 코드 작성
-      });
-    })
-    // 카메라 오류 시
-        .catchError((Object e) {
-      if (e is CameraException) {
-        switch (e.code) {
-          case 'CameraAccessDenied':
-            print("CameraController Error : CameraAccessDenied");
-            // Handle access errors here.
-            break;
-          default:
-            print("CameraController Error");
-            // Handle other errors here.
-            break;
-        }
-      }
+      setState(() {});
     });
   }
 
-  // 사진을 찍는 함수
+  //사진 찍는 함수
   Future<void> _takePicture() async {
-    if (!controller.value.isInitialized) {
+    if (!_controller.value.isInitialized) {
+      print('Controller is not initialized');
       return;
     }
 
+    final XFile image = await _controller.takePicture();
+    File imageFile = File(image.path);
+
+    // Temporary place file inside the app's directory
+    final Directory extDir = await getApplicationDocumentsDirectory();
+    final String dirPath = '${extDir.path}/Pictures/flutter_test';
+    await Directory(dirPath).create(recursive: true);
+    final String filePath = '$dirPath/${timestamp()}.jpg';
+
+    File tempImage = await imageFile.copy(filePath);
+
+    sendImageToServer(tempImage);
+  }
+
+  //서버로 이미지 전송
+  Future<void> sendImageToServer(File imageFile) async {
+    // Ngrok을 통해 터널링된 서버의 주소를 사용합니다.
+    var uri = Uri.parse('https://ead6-220-66-156-153.ngrok-free.app/upload/');
+    var request = http.MultipartRequest('POST', uri)
+      ..files.add(await http.MultipartFile.fromPath(
+        'file',
+        imageFile.path,
+        contentType: MediaType('image', 'jpeg'),
+      ));
+
     try {
-      // 사진 촬영
-      final XFile file = await controller.takePicture();
-
-      // 사진을 저장할 경로 : 기본경로(storage/emulated/0/)
-      Directory directory = Directory('storage/emulated/0/DCIM/MyImages');
-
-      // 지정한 경로에 디렉토리를 생성하는 코드
-      // .create : 디렉토리 생성
-      // recursive : true - 존재하지 않는 디렉토리일 경우 자동 생성
-      await Directory(directory.path).create(recursive: true);
-
-      // 지정한 경로에 사진 저장
-      await File(file.path).copy('${directory.path}/${file.name}');
+      var response = await request.send();
+      if (response.statusCode == 200) {
+        print('Image uploaded successfully');
+        // You can listen to the response here if you want to use the analysis result immediately
+        // 서버의 응답을 받아 처리하는 코드를 여기에 추가할 수 있습니다.
+      } else {
+        print('Failed to upload image: ${response.statusCode}');
+      }
     } catch (e) {
-      print('Error taking picture: $e');
+      print('Error occurred: $e');
     }
   }
 
+
+  String timestamp() => DateTime.now().millisecondsSinceEpoch.toString();
+
   @override
   void dispose() {
-    // 카메라 컨트롤러 해제
-    controller.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // 카메라가 준비되지 않으면 아무것도 띄우지 않음
-    if (!controller.value.isInitialized) {
-      return Container();
-    }
-
-    // 카메라 인터페이스와 위젯을 겹쳐 구성할 예정이므로 Stack 위젯 사용
     return Scaffold(
       appBar: AppBar(
         title: Text('EYEFORYOU'),
         centerTitle: true,
         actions: [
-          IconButton(//CameraAppState
-            onPressed: () {},
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ExplainMain()),
+              );
+            },
             icon: Icon(Icons.question_mark_rounded),
-          )
+          ),
         ],
       ),
       drawer: Drawer(
@@ -143,7 +147,11 @@ class CameraAppState extends State<CameraApp> {
               //iconColor: Colors.purple,
               //focusColor: Colors.grey,
               title: Text('혜택 모아보기'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Benefit()),
+                );
+              },
               trailing: Icon(Icons.navigate_next),
             ),
             ListTile(
@@ -173,15 +181,65 @@ class CameraAppState extends State<CameraApp> {
           ],
         ),
       ),
-      body: Stack(
-        children: [
-          // 화면 전체를 차지하도록 Positioned.fill 위젯 사용
-          Positioned.fill(
-            // 카메라 촬영 화면이 보일 CameraPrivew
-            child: CameraPreview(controller),
-          ),
+      // body: FutureBuilder<void>(
+      //   future: _controller.initialize(),
+      //   builder: (context, snapshot) {
+      //     if (snapshot.connectionState == ConnectionState.done) {
+      //       // Future가 완료되면, 프리뷰를 표시합니다.
+      //       return Stack(
+      //         fit: StackFit.expand, // Stack을 전체 화면으로 확장
+      //         children: <Widget>[
+      //           CameraPreview(_controller), // 카메라 프리뷰를 전체 화면으로 표시합니다.
+      //           Positioned( // 카메라 버튼 위치 조정
+      //             bottom: 30.0,
+      //             right: 150.0,
+      //             child: FloatingActionButton(
+      //               onPressed: _takePicture, // 사진 찍는 함수 연결
+      //               child: const Icon(Icons.circle_rounded),
+      //               backgroundColor: new Color((0xff0000)),
+      //
+      //             ),
+      //           ),
+      //         ],
+      //       );
+      //     } else {
+      //       // 그렇지 않으면, 로딩 스피너를 표시합니다.
+      //       return const Center(child: CircularProgressIndicator());
+      //     }
+      //   },
+      // ),
+
+      body: _controller.value.isInitialized
+          ? Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          CameraPreview(_controller),
+          Positioned(
+            bottom: 30.0,
+              right: 150.0,
+              child: FloatingActionButton(
+                onPressed: _takePicture,
+                child: const Icon(Icons.camera_alt),
+                backgroundColor: new Color(0x000000),
+              ))
         ],
-      ),
+      )
+          : Container(),
+
+      // body: _controller.value.isInitialized
+      //     ? Stack(
+      //   children: [
+      //     CameraPreview(_controller),
+      //     // 여기에 필요한 다른 위젯을 추가하세요
+      //   ],
+      // )
+      //     : Container(),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _takePicture,
+      //   child: Icon(Icons.camera_alt),
+      // ),
+
+
     );
   }
 }
