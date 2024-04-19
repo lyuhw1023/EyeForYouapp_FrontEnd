@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:app_eyeforyou/explain_main.dart';
+import 'package:app_eyeforyou/benefit.dart';
 
 // 사용가능한 카메라 장치의 목록을 저장하는 변수
 late List<CameraDescription> _cameras;
@@ -53,6 +54,7 @@ class _CameraAppState extends State<CameraApp> {
     });
   }
 
+  //사진 찍는 함수
   Future<void> _takePicture() async {
     if (!_controller.value.isInitialized) {
       print('Controller is not initialized');
@@ -70,10 +72,10 @@ class _CameraAppState extends State<CameraApp> {
 
     File tempImage = await imageFile.copy(filePath);
 
-    // Send to server
     sendImageToServer(tempImage);
   }
 
+  //서버로 이미지 전송
   Future<void> sendImageToServer(File imageFile) async {
     // Ngrok을 통해 터널링된 서버의 주소를 사용합니다.
     var uri = Uri.parse('https://ead6-220-66-156-153.ngrok-free.app/upload/');
@@ -126,20 +128,118 @@ class _CameraAppState extends State<CameraApp> {
         ],
       ),
       drawer: Drawer(
-        // 여기에 드로어의 내용을 추가하세요
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border(bottom: BorderSide(color: Colors.black, width: 1)),
+              ),
+              child: Center(
+                child: Text('EYEFORYOU',
+                  style: TextStyle(color: Colors.grey, fontSize: 15),
+                ),
+              ),
+            ),
+            ListTile(
+              //leading: Icon(Icons.home),
+              //iconColor: Colors.purple,
+              //focusColor: Colors.grey,
+              title: Text('혜택 모아보기'),
+              onTap: () {
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Benefit()),
+                );
+              },
+              trailing: Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              //leading: Icon(Icons.home),
+              //iconColor: Colors.purple,
+              focusColor: Colors.grey,
+              title: Text('복지 시설 모아보기'),
+              onTap: () {},
+              trailing: Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              //leading: Icon(Icons.home),
+              //iconColor: Colors.purple,
+              focusColor: Colors.grey,
+              title: Text('도움말'),
+              onTap: () {},
+              trailing: Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              //leading: Icon(Icons.home),
+              //iconColor: Colors.purple,
+              focusColor: Colors.grey,
+              title: Text('설정'),
+              onTap: () {},
+              trailing: Icon(Icons.navigate_next),
+            ),
+          ],
+        ),
       ),
+      // body: FutureBuilder<void>(
+      //   future: _controller.initialize(),
+      //   builder: (context, snapshot) {
+      //     if (snapshot.connectionState == ConnectionState.done) {
+      //       // Future가 완료되면, 프리뷰를 표시합니다.
+      //       return Stack(
+      //         fit: StackFit.expand, // Stack을 전체 화면으로 확장
+      //         children: <Widget>[
+      //           CameraPreview(_controller), // 카메라 프리뷰를 전체 화면으로 표시합니다.
+      //           Positioned( // 카메라 버튼 위치 조정
+      //             bottom: 30.0,
+      //             right: 150.0,
+      //             child: FloatingActionButton(
+      //               onPressed: _takePicture, // 사진 찍는 함수 연결
+      //               child: const Icon(Icons.circle_rounded),
+      //               backgroundColor: new Color((0xff0000)),
+      //
+      //             ),
+      //           ),
+      //         ],
+      //       );
+      //     } else {
+      //       // 그렇지 않으면, 로딩 스피너를 표시합니다.
+      //       return const Center(child: CircularProgressIndicator());
+      //     }
+      //   },
+      // ),
+
       body: _controller.value.isInitialized
           ? Stack(
-        children: [
+        fit: StackFit.expand,
+        children: <Widget>[
           CameraPreview(_controller),
-          // 여기에 필요한 다른 위젯을 추가하세요
+          Positioned(
+            bottom: 30.0,
+              right: 150.0,
+              child: FloatingActionButton(
+                onPressed: _takePicture,
+                child: const Icon(Icons.camera_alt),
+                backgroundColor: new Color(0x000000),
+              ))
         ],
       )
           : Container(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _takePicture,
-        child: Icon(Icons.camera_alt),
-      ),
+
+      // body: _controller.value.isInitialized
+      //     ? Stack(
+      //   children: [
+      //     CameraPreview(_controller),
+      //     // 여기에 필요한 다른 위젯을 추가하세요
+      //   ],
+      // )
+      //     : Container(),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _takePicture,
+      //   child: Icon(Icons.camera_alt),
+      // ),
+
+
     );
   }
 }
