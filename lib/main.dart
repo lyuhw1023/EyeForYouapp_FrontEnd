@@ -64,7 +64,6 @@ class _CameraAppState extends State<CameraApp> {
     final XFile image = await _controller.takePicture();
     File imageFile = File(image.path);
 
-    // Temporary place file inside the app's directory
     final Directory extDir = await getApplicationDocumentsDirectory();
     final String dirPath = '${extDir.path}/Pictures/flutter_test';
     await Directory(dirPath).create(recursive: true);
@@ -77,7 +76,7 @@ class _CameraAppState extends State<CameraApp> {
 
   //서버로 이미지 전송
   Future<void> sendImageToServer(File imageFile) async {
-    // Ngrok을 통해 터널링된 서버의 주소를 사용합니다.
+    // Ngrok을 통해 터널링된 서버의 주소 사용
     var uri = Uri.parse('https://ead6-220-66-156-153.ngrok-free.app/upload/');
     var request = http.MultipartRequest('POST', uri)
       ..files.add(await http.MultipartFile.fromPath(
@@ -90,8 +89,7 @@ class _CameraAppState extends State<CameraApp> {
       var response = await request.send();
       if (response.statusCode == 200) {
         print('Image uploaded successfully');
-        // You can listen to the response here if you want to use the analysis result immediately
-        // 서버의 응답을 받아 처리하는 코드를 여기에 추가할 수 있습니다.
+        // 서버의 응답을 받아 처리하는 코드를 여기에 추가
       } else {
         print('Failed to upload image: ${response.statusCode}');
       }
@@ -143,9 +141,6 @@ class _CameraAppState extends State<CameraApp> {
               ),
             ),
             ListTile(
-              //leading: Icon(Icons.home),
-              //iconColor: Colors.purple,
-              //focusColor: Colors.grey,
               title: Text('혜택 모아보기'),
               onTap: () {
                 Navigator.push(context,
@@ -155,24 +150,18 @@ class _CameraAppState extends State<CameraApp> {
               trailing: Icon(Icons.navigate_next),
             ),
             ListTile(
-              //leading: Icon(Icons.home),
-              //iconColor: Colors.purple,
               focusColor: Colors.grey,
               title: Text('복지 시설 모아보기'),
               onTap: () {},
               trailing: Icon(Icons.navigate_next),
             ),
             ListTile(
-              //leading: Icon(Icons.home),
-              //iconColor: Colors.purple,
               focusColor: Colors.grey,
               title: Text('도움말'),
               onTap: () {},
               trailing: Icon(Icons.navigate_next),
             ),
             ListTile(
-              //leading: Icon(Icons.home),
-              //iconColor: Colors.purple,
               focusColor: Colors.grey,
               title: Text('설정'),
               onTap: () {},
@@ -181,34 +170,6 @@ class _CameraAppState extends State<CameraApp> {
           ],
         ),
       ),
-      // body: FutureBuilder<void>(
-      //   future: _controller.initialize(),
-      //   builder: (context, snapshot) {
-      //     if (snapshot.connectionState == ConnectionState.done) {
-      //       // Future가 완료되면, 프리뷰를 표시합니다.
-      //       return Stack(
-      //         fit: StackFit.expand, // Stack을 전체 화면으로 확장
-      //         children: <Widget>[
-      //           CameraPreview(_controller), // 카메라 프리뷰를 전체 화면으로 표시합니다.
-      //           Positioned( // 카메라 버튼 위치 조정
-      //             bottom: 30.0,
-      //             right: 150.0,
-      //             child: FloatingActionButton(
-      //               onPressed: _takePicture, // 사진 찍는 함수 연결
-      //               child: const Icon(Icons.circle_rounded),
-      //               backgroundColor: new Color((0xff0000)),
-      //
-      //             ),
-      //           ),
-      //         ],
-      //       );
-      //     } else {
-      //       // 그렇지 않으면, 로딩 스피너를 표시합니다.
-      //       return const Center(child: CircularProgressIndicator());
-      //     }
-      //   },
-      // ),
-
       body: _controller.value.isInitialized
           ? Stack(
         fit: StackFit.expand,
@@ -221,25 +182,11 @@ class _CameraAppState extends State<CameraApp> {
                 onPressed: _takePicture,
                 child: const Icon(Icons.camera_alt),
                 backgroundColor: new Color(0x000000),
-              ))
+              )
+          )
         ],
       )
-          : Container(),
-
-      // body: _controller.value.isInitialized
-      //     ? Stack(
-      //   children: [
-      //     CameraPreview(_controller),
-      //     // 여기에 필요한 다른 위젯을 추가하세요
-      //   ],
-      // )
-      //     : Container(),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _takePicture,
-      //   child: Icon(Icons.camera_alt),
-      // ),
-
-
+          :Container(),
     );
   }
 }

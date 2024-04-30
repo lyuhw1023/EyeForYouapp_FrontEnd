@@ -24,51 +24,105 @@ class Benefit extends StatelessWidget{
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(5.0),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                OptionCard(
+                  icon: Icons.visibility_outlined,
+                  text: '중증\n(1급 ~ 3급)',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FirstPage()),
+                    );
+                  },
+                ),
+                SizedBox(width: 30),
+                OptionCard(
+                  icon: Icons.remove_red_eye,
+                  text: '경증\n(4급 ~ 6급)',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SecondPage()),
+                    );
+                  },
+                ),
+              ],
+            ),
+            // 필요하다면 더 많은 카드를 여기에 추가하세요.
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class OptionCard extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  final VoidCallback onTap;
+
+  const OptionCard({Key? key, required this.icon, required this.text, required this.onTap}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: 150,
+        height: 230,
+        decoration: BoxDecoration(
+          color: Color(0xFF08436D), // 색상을 HEX 코드로 설정
+          borderRadius: BorderRadius.circular(8),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                _OptionCard(title: '복지 서비스', iconData: Icons.health_and_safety),
-                _OptionCard(title: '지역', iconData: Icons.location_city),
-              ],
-            ),
-            SizedBox(height: 30),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                _OptionCard(title: '생애 주기', iconData: Icons.autorenew),
-                _OptionCard(title: '장애 정도', iconData: Icons.accessible_forward),
-              ],
+            Icon(icon, color: Colors.white, size: 60), // 아이콘 크기 조절
+            SizedBox(height: 10),
+            Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14, // 텍스트 크기 조절
+              ),
             ),
           ],
         ),
       ),
     );
   }
-  Widget _OptionCard({required String title, required IconData iconData}) {
-    return GestureDetector(
-      onTap: () {
-        // 옵션 선택 시 수행할 동작
-      },
-      child: Container(
-        width: 130,
-        height: 190,
-        decoration: BoxDecoration(
-          color: Color(0xFF08436D),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(iconData, color: Colors.white, size: 40),
-            SizedBox(height: 8),
-            Text(title, textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
-          ],
-        ),
+}
+
+class FirstPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("첫 번째 페이지"),
+      ),
+      body: Center(
+        child: Text("이것은 첫 번째 페이지입니다."),
+      ),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("두 번째 페이지"),
+      ),
+      body: Center(
+        child: Text("이것은 두 번째 페이지입니다."),
       ),
     );
   }
