@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:app_eyeforyou/explain_main.dart';
-import 'package:app_eyeforyou/benefit.dart';
+import 'package:app_eyeforyou/benefit_first.dart';
 
 // 사용가능한 카메라 장치의 목록을 저장하는 변수
 late List<CameraDescription> _cameras;
@@ -111,14 +111,18 @@ class _CameraAppState extends State<CameraApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('EYEFORYOU'),
+        title: Text('EYEFORYOU',
+          style: TextStyle(
+            fontSize: 19,
+          ),
+        ),
         centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ExplainMain()),
+                  _createRoute(),
               );
             },
             icon: Icon(Icons.question_mark_rounded),
@@ -144,15 +148,9 @@ class _CameraAppState extends State<CameraApp> {
               title: Text('혜택 모아보기'),
               onTap: () {
                 Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Benefit()),
+                  MaterialPageRoute(builder: (context) => BenefitFirst()),
                 );
               },
-              trailing: Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              focusColor: Colors.grey,
-              title: Text('복지 시설 모아보기'),
-              onTap: () {},
               trailing: Icon(Icons.navigate_next),
             ),
             ListTile(
@@ -187,6 +185,26 @@ class _CameraAppState extends State<CameraApp> {
         ],
       )
           :Container(),
+    );
+  }
+
+  //애니메이션 추가 함수
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => ExplainMain(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.0, 1.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+
+        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var offsetAnimation = animation.drive(tween);
+
+        return SlideTransition(
+          position: offsetAnimation,
+          child: child,
+        );
+      },
     );
   }
 }

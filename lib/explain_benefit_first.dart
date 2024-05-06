@@ -21,6 +21,7 @@ class ExplainBenefitFirst extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('혜택 모아보기',
           style: TextStyle(
             fontSize: 19,
@@ -38,7 +39,7 @@ class ExplainBenefitFirst extends StatelessWidget{
         padding: const EdgeInsets.all(16.0),
         child: RichText(
           text: TextSpan(
-            style: TextStyle(color: Colors.black, fontSize: 17), // Default text style
+            style: TextStyle(color: Colors.black, fontSize: 17, height: 1.3), // Default text style
             children: [
               normalText('\n이 페이지는 시각장애인을 위한 혜택 정보를 제공하는 서비스입니다. 앱의 메인 페이지에는 생애 주기와 복지서비스 이렇게 두 가지 옵션이 있습니다.\n'),
               boldText('\n생애주기\n'),

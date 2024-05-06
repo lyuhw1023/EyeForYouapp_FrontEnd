@@ -12,6 +12,7 @@ class ExplainMain extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('AI 카메라 서비스',
           style: TextStyle(
             fontSize: 19,
