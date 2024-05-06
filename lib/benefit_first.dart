@@ -1,15 +1,20 @@
-import 'dart:io';
-
+import 'package:app_eyeforyou/benefit_care_list.dart';
+import 'package:app_eyeforyou/benefit_life_list.dart';
+import 'package:app_eyeforyou/explain_benefit_first.dart';
 import 'package:flutter/material.dart';
 
-class Benefit extends StatelessWidget{
-  const Benefit({Key? key}) : super(key: key);
+class BenefitFirst extends StatelessWidget{
+  const BenefitFirst({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text("혜택 모아보기"),
+        title: Text("혜택 모아보기",
+          style: TextStyle(
+            fontSize: 19,
+          ),
+        ),
         centerTitle: true,
         shape: Border(
           bottom: BorderSide(
@@ -19,7 +24,12 @@ class Benefit extends StatelessWidget{
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                _createRoute(),
+              );
+            },
             icon: Icon(Icons.question_mark_rounded),
           ),
         ],
@@ -32,23 +42,23 @@ class Benefit extends StatelessWidget{
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 OptionCard(
-                  icon: Icons.visibility_outlined,
-                  text: '중증\n(1급 ~ 3급)',
+                  icon: Icons.autorenew,
+                  text: '생애주기',
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => FirstPage()),
+                      MaterialPageRoute(builder: (context) => BenefitLifeList()),
                     );
                   },
                 ),
                 SizedBox(width: 30),
                 OptionCard(
-                  icon: Icons.remove_red_eye,
-                  text: '경증\n(4급 ~ 6급)',
+                  icon: Icons.health_and_safety_outlined,
+                  text: '복지 서비스',
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SecondPage()),
+                      MaterialPageRoute(builder: (context) => BenefitCareList()),
                     );
                   },
                 ),
@@ -58,6 +68,27 @@ class Benefit extends StatelessWidget{
           ],
         ),
       ),
+    );
+  }
+
+  //애니메이션 추가 함수
+  //_createRoute(),
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => ExplainBenefitFirst(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.0, 1.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+
+        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var offsetAnimation = animation.drive(tween);
+
+        return SlideTransition(
+          position: offsetAnimation,
+          child: child,
+        );
+      },
     );
   }
 }
@@ -74,7 +105,7 @@ class OptionCard extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: 150,
+        width: 140,
         height: 230,
         decoration: BoxDecoration(
           color: Color(0xFF08436D), // 색상을 HEX 코드로 설정
@@ -90,39 +121,11 @@ class OptionCard extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 14, // 텍스트 크기 조절
+                fontSize: 15, // 텍스트 크기 조절
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class FirstPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("첫 번째 페이지"),
-      ),
-      body: Center(
-        child: Text("이것은 첫 번째 페이지입니다."),
-      ),
-    );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("두 번째 페이지"),
-      ),
-      body: Center(
-        child: Text("이것은 두 번째 페이지입니다."),
       ),
     );
   }
