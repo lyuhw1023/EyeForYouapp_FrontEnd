@@ -21,10 +21,18 @@ class BenefitCareList extends StatelessWidget{
             width: 1,
           ),
         ),
+        leading:  IconButton(
+            onPressed: () {
+              Navigator.pop(context); //뒤로가기
+            },
+            icon: Icon(Icons.arrow_back,
+                semanticLabel: "뒤로가기")
+        ),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.question_mark_rounded),
+            icon: Icon(Icons.question_mark_rounded,
+                semanticLabel: "도움말"),
           ),
         ],
       ),

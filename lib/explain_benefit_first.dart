@@ -30,7 +30,8 @@ class ExplainBenefitFirst extends StatelessWidget{
         centerTitle: true,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.close),
+            icon: Icon(Icons.close,
+                semanticLabel: "닫기"),
             onPressed: () => Navigator.of(context).pop(),
           ),
         ],

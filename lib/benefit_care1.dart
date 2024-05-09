@@ -10,7 +10,7 @@ class BenefitCare1 extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text("혜택 모아보기",
+        title: Text("생활 안정",
           style: TextStyle(
             fontSize: 19,
           ),
@@ -22,6 +22,13 @@ class BenefitCare1 extends StatelessWidget{
             width: 1,
           ),
         ),
+        leading:  IconButton(
+            onPressed: () {
+              Navigator.pop(context); //뒤로가기
+            },
+            icon: Icon(Icons.arrow_back,
+                semanticLabel: "뒤로가기")
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -30,7 +37,8 @@ class BenefitCare1 extends StatelessWidget{
                 _createRoute(),
               );
             },
-            icon: Icon(Icons.question_mark_rounded),
+            icon: Icon(Icons.question_mark_rounded,
+                semanticLabel: "도움말"),
           ),
         ],
       ),

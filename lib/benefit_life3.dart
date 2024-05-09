@@ -1,16 +1,16 @@
-import 'package:app_eyeforyou/care2_nosev.dart';
-import 'package:app_eyeforyou/care2_sev.dart';
 import 'package:app_eyeforyou/explain_benefit_second.dart';
+import 'package:app_eyeforyou/life1_nosev.dart';
+import 'package:app_eyeforyou/life1_sev.dart';
 import 'package:flutter/material.dart';
 
-class BenefitCare2 extends StatelessWidget{
-  const BenefitCare2({Key? key}) : super(key: key);
+class BenefitLife3 extends StatelessWidget{
+  const BenefitLife3({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text("가족 지원",
+        title: Text("성인",
           style: TextStyle(
             fontSize: 19,
           ),
@@ -55,7 +55,7 @@ class BenefitCare2 extends StatelessWidget{
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Care2Sev()),
+                      MaterialPageRoute(builder: (context) => Life1Sev()),
                     );
                   },
                 ),
@@ -66,13 +66,12 @@ class BenefitCare2 extends StatelessWidget{
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Care2NoSev()),
+                      MaterialPageRoute(builder: (context) => Life1NoSev()),
                     );
                   },
                 ),
               ],
             ),
-            // 필요하다면 더 많은 카드를 여기에 추가하세요.
           ],
         ),
       ),
