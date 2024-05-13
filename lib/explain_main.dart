@@ -8,6 +8,15 @@ class ExplainMain extends StatelessWidget{
     return TextSpan(text: text);
   }
 
+  // 굵은 텍스트 스타일
+  TextSpan boldText(String text) {
+    return TextSpan(
+        text: text,
+        style: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 19));
+  }
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -27,20 +36,19 @@ class ExplainMain extends StatelessWidget{
           ),
         ],
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0), // 적절한 여백 설정
-          child: Container(
-            alignment: Alignment.center,
-            child: Text(
-              '카메라를 편의점 물체들에 비추면, \n그 물건이 무엇인 지 자동으로 읽을 수 있습니다.\n\n'
-                  '읽고자 하는 물건이 카메라 프레임에 걸치거나, 잘 안보이는 경우, 진동을 \n주어 프레임 안쪽으로 들어오도록 할 수 있습니다.',
-              textAlign: TextAlign.center, // 텍스트를 가운데 정렬
-              style: TextStyle(
-                fontSize: 16,
-                height: 1.5,  // 행간 조정
-              ),
-            ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: RichText(
+          text: TextSpan(
+            style: TextStyle(color: Colors.black, fontSize: 17, height: 1.3), // Default text style
+            children: [
+              normalText('\n편의점 물건들을 카메라로 비추면, 물건이 무엇인 지 보이스 오버 기능을 통해 읽어줍니다.\n'),
+              boldText('\n기능 소개\n'),
+              normalText('□ 물건 인식: 카메라를 편의점 물건에 비추면 물건의 종류를 읽어줍니다.\n\n'),
+              boldText('사용 방법\n'),
+              normalText('1. 카메라로 물건 비추기: 편의점에서 원하는 물건을 카메라로 비춥니다.\n\n'),
+              normalText('2. 물건 정보 듣기: 물건이 어떤 것인지 보이스 오버 기능을 통해 음성으로 확인하세요.\n')
+            ],
           ),
         ),
       ),
