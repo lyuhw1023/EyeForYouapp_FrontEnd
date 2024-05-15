@@ -1,3 +1,11 @@
+import 'package:app_eyeforyou/ex_activity.dart';
+import 'package:app_eyeforyou/ex_baldal.dart';
+import 'package:app_eyeforyou/ex_childmental.dart';
+import 'package:app_eyeforyou/ex_family.dart';
+import 'package:app_eyeforyou/ex_gingeupbokji.dart';
+import 'package:app_eyeforyou/ex_healthbohum.dart';
+import 'package:app_eyeforyou/ex_taxi.dart';
+import 'package:app_eyeforyou/ex_youthsupport.dart';
 import 'package:flutter/material.dart';
 
 class Life2Sev extends StatelessWidget{
@@ -14,12 +22,14 @@ class Life2Sev extends StatelessWidget{
   ];
 
   final List<Widget> pages = [
-    // CallTaxiServicePage(),
-    // ReaderServicePage(),
-    // EmergencyWelfarePage(),
-    // DevelopmentalRehabPage(),
-    // TelecomSupportPage(),
-    // FamilyCareProgramPage(),
+    ExTaxi(),
+    ExGingeupBokji(),
+    ExHealthBohum(),
+    ExChildMental(),
+    ExBaldal(),
+    ExYouthSupport(),
+    ExFamily(),
+    ExActivity()
   ];
 
   @override

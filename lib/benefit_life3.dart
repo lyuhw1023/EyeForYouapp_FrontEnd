@@ -1,6 +1,6 @@
 import 'package:app_eyeforyou/explain_benefit_second.dart';
-import 'package:app_eyeforyou/life1_nosev.dart';
-import 'package:app_eyeforyou/life1_sev.dart';
+import 'package:app_eyeforyou/life3_nosev.dart';
+import 'package:app_eyeforyou/life3_sev.dart';
 import 'package:flutter/material.dart';
 
 class BenefitLife3 extends StatelessWidget{
@@ -55,7 +55,7 @@ class BenefitLife3 extends StatelessWidget{
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Life1Sev()),
+                      MaterialPageRoute(builder: (context) => Life3Sev()),
                     );
                   },
                 ),
@@ -66,7 +66,7 @@ class BenefitLife3 extends StatelessWidget{
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Life1NoSev()),
+                      MaterialPageRoute(builder: (context) => Life3NoSev()),
                     );
                   },
                 ),

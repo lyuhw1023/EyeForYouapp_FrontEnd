@@ -1,7 +1,14 @@
+import 'package:app_eyeforyou/ex_activity.dart';
+import 'package:app_eyeforyou/ex_family.dart';
+import 'package:app_eyeforyou/ex_gingeupbokji.dart';
+import 'package:app_eyeforyou/ex_hanggong.dart';
+import 'package:app_eyeforyou/ex_healthbohum.dart';
+import 'package:app_eyeforyou/ex_insik.dart';
+import 'package:app_eyeforyou/ex_medical.dart';
 import 'package:app_eyeforyou/ex_taxi.dart';
 import 'package:flutter/material.dart';
 
-class Life1Sev extends StatelessWidget{
+class Life3Sev extends StatelessWidget{
 
   final List<String> categories = [
     "장애인 콜택시 \n(두리발, 자비콜, \n마마콜, 쏠라티)",
@@ -10,18 +17,20 @@ class Life1Sev extends StatelessWidget{
     "장애가족\n역량강화\n프로그램",
     "[바우처]\n장애인\n활동지원\n서비스",
     "장애인\n인식개선\n활동\n프로그램",
-    "의료급여\n중증질환,\희귀질환 및\n중증난치질환\n지원",
+    "의료급여\n중증질환,\n희귀질환 및\n중증난치질환\n지원",
     "항공요금\n할인 및\n서비스"
 
   ];
 
   final List<Widget> pages = [
     ExTaxi(),
-    // ReaderServicePage(),
-    // EmergencyWelfarePage(),
-    // DevelopmentalRehabPage(),
-    // TelecomSupportPage(),
-    // FamilyCareProgramPage(),
+    ExGingeupBokji(),
+    ExHealthBohum(),
+    ExFamily(),
+    ExActivity(),
+    ExInsik(),
+    ExMedical(),
+    ExHanggong()
   ];
 
   @override
