@@ -1,16 +1,16 @@
-import 'package:app_eyeforyou/care1_nosev.dart';
-import 'package:app_eyeforyou/care1_sev.dart';
 import 'package:app_eyeforyou/explain_benefit_second.dart';
+import 'package:app_eyeforyou/life3_nosev.dart';
+import 'package:app_eyeforyou/life3_sev.dart';
 import 'package:flutter/material.dart';
 
-class BenefitCare1 extends StatelessWidget{
-  const BenefitCare1({Key? key}) : super(key: key);
+class BenefitLife3 extends StatelessWidget{
+  const BenefitLife3({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text("생활 안정",
+        title: Text("성인",
           style: TextStyle(
             fontSize: 25,
           ),
@@ -56,7 +56,7 @@ class BenefitCare1 extends StatelessWidget{
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Care1Sev()),
+                      MaterialPageRoute(builder: (context) => Life3Sev()),
                     );
                   },
                 ),
@@ -67,7 +67,7 @@ class BenefitCare1 extends StatelessWidget{
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Care1NoSev()),
+                      MaterialPageRoute(builder: (context) => Life3NoSev()),
                     );
                   },
                 ),

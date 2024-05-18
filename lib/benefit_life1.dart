@@ -10,17 +10,25 @@ class BenefitLife1 extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text("혜택 모아보기",
+        title: Text("영유아",
           style: TextStyle(
-            fontSize: 19,
+            fontSize: 25,
           ),
         ),
+        toolbarHeight: 75.0,
         centerTitle: true,
         shape: Border(
           bottom: BorderSide(
             color: Colors.black,
             width: 1,
           ),
+        ),
+        leading:  IconButton(
+            onPressed: () {
+              Navigator.pop(context); //뒤로가기
+            },
+            icon: Icon(Icons.arrow_back,
+                semanticLabel: "뒤로가기")
         ),
         actions: [
           IconButton(
@@ -30,7 +38,8 @@ class BenefitLife1 extends StatelessWidget{
                 _createRoute(),
               );
             },
-            icon: Icon(Icons.question_mark_rounded),
+            icon: Icon(Icons.question_mark_rounded,
+                semanticLabel: "도움말"),
           ),
         ],
       ),
@@ -119,39 +128,11 @@ class OptionCard extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 14, // 텍스트 크기 조절
+                fontSize: 20, // 텍스트 크기 조절
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class FirstPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("첫 번째 페이지"),
-      ),
-      body: Center(
-        child: Text("이것은 첫 번째 페이지입니다."),
-      ),
-    );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("두 번째 페이지"),
-      ),
-      body: Center(
-        child: Text("이것은 두 번째 페이지입니다."),
       ),
     );
   }

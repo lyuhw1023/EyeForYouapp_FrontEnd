@@ -10,17 +10,25 @@ class BenefitLife2 extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text("혜택 모아보기",
+        title: Text("아동 & 청소년",
           style: TextStyle(
-            fontSize: 19,
+            fontSize: 25,
           ),
         ),
+        toolbarHeight: 75.0,
         centerTitle: true,
         shape: Border(
           bottom: BorderSide(
             color: Colors.black,
             width: 1,
           ),
+        ),
+        leading:  IconButton(
+            onPressed: () {
+              Navigator.pop(context); //뒤로가기
+            },
+            icon: Icon(Icons.arrow_back,
+                semanticLabel: "뒤로가기")
         ),
         actions: [
           IconButton(
@@ -31,7 +39,8 @@ class BenefitLife2 extends StatelessWidget{
               );
 
             },
-            icon: Icon(Icons.question_mark_rounded),
+            icon: Icon(Icons.question_mark_rounded,
+                semanticLabel: "도움말"),
           ),
         ],
       ),
@@ -120,7 +129,7 @@ class OptionCard extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 14, // 텍스트 크기 조절
+                fontSize: 20, // 텍스트 크기 조절
               ),
             ),
           ],

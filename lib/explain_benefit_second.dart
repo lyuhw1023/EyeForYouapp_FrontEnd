@@ -21,6 +21,7 @@ class ExplainBenefitSecond extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('혜택 모아보기',
           style: TextStyle(
             fontSize: 19,
@@ -29,7 +30,8 @@ class ExplainBenefitSecond extends StatelessWidget{
         centerTitle: true,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.close),
+            icon: Icon(Icons.close,
+                semanticLabel: "닫기"),
             onPressed: () => Navigator.of(context).pop(),
           ),
         ],
