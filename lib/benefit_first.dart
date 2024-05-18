@@ -12,9 +12,10 @@ class BenefitFirst extends StatelessWidget{
       appBar: AppBar(
         title: Text("혜택 모아보기",
           style: TextStyle(
-            fontSize: 19,
+            fontSize: 25,
           ),
         ),
+        toolbarHeight: 75.0,
         centerTitle: true,
         shape: Border(
           bottom: BorderSide(
@@ -129,7 +130,7 @@ class OptionCard extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 15, // 텍스트 크기 조절
+                fontSize: 20, // 텍스트 크기 조절
               ),
             ),
           ],

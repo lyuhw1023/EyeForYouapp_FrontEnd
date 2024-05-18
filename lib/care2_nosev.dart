@@ -1,25 +1,36 @@
+import 'package:app_eyeforyou/ex_activity.dart';
+import 'package:app_eyeforyou/ex_caraccident.dart';
+import 'package:app_eyeforyou/ex_child.dart';
+import 'package:app_eyeforyou/ex_childcare.dart';
+import 'package:app_eyeforyou/ex_childfoster.dart';
+import 'package:app_eyeforyou/ex_family.dart';
+import 'package:app_eyeforyou/ex_familynurture.dart';
+import 'package:app_eyeforyou/ex_psychotherapy.dart';
+import 'package:app_eyeforyou/explain_care2_nosev.dart';
 import 'package:flutter/material.dart';
 
 class Care2NoSev extends StatelessWidget{
 
   final List<String> categories = [
-    "항공요금 할인 및 서비스",
-    "저소득층 재난적 \n의료비 지원",
-    "만 3~5세 누리과정\n지원",
-    "희귀질환 유전자\n진단지원",
-    "장애아 통합지정\n어린이집",
-    "심리치료\n(미술,놀이,음악 등)",
-    "관광 및 \n나들이(여행)",
-    "건강보험 산정특례 등록 신청"
+    "장애가족\n역량강화\n프로그램",
+    "[바우처]\n장애인\n활동지원\n서비스",
+    "장애아가족\n양육지원\n(돌봄서비스,휴식지원서비스)",
+    "심리치료\n(미술,놀이, 음악 등)",
+    "자동차사고\n피해지원\n제도",
+    "장애인 자녀\n부모자조모임",
+    "아이돌봄\n지원사업",
+    "가정위탁아동\n보호지원",
   ];
 
   final List<Widget> pages = [
-    // CallTaxiServicePage(),
-    // ReaderServicePage(),
-    // EmergencyWelfarePage(),
-    // DevelopmentalRehabPage(),
-    // TelecomSupportPage(),
-    // FamilyCareProgramPage(),
+    ExFamily(),
+    ExActivity(),
+    ExFamilyNurture(),
+    ExPsychotherapy(),
+    ExCarAccident(),
+    ExChild(),
+    ExChildCare(),
+    ExChildFoster()
   ];
 
   @override
@@ -28,9 +39,10 @@ class Care2NoSev extends StatelessWidget{
       appBar: AppBar(
         title: Text("가족 지원, 경증 혜택",
           style: TextStyle(
-            fontSize: 19,
+            fontSize: 25,
           ),
         ),
+        toolbarHeight: 75.0,
         centerTitle: true,
         shape: Border(
           bottom: BorderSide(
@@ -47,7 +59,12 @@ class Care2NoSev extends StatelessWidget{
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ExplainCare2Nosev()),
+              );
+            },
             icon: Icon(Icons.question_mark_rounded,
                 semanticLabel: "도움말"),
           ),
@@ -74,14 +91,14 @@ class Care2NoSev extends StatelessWidget{
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
+                  color: Color(0xFF08436D).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
                   categories[index],
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 18,
                   ),
                 ),
               ),

@@ -6,6 +6,7 @@ import 'package:app_eyeforyou/ex_healthbohum.dart';
 import 'package:app_eyeforyou/ex_insik.dart';
 import 'package:app_eyeforyou/ex_medical.dart';
 import 'package:app_eyeforyou/ex_taxi.dart';
+import 'package:app_eyeforyou/explain_life3_sev.dart';
 import 'package:flutter/material.dart';
 
 class Life3Sev extends StatelessWidget{
@@ -39,9 +40,10 @@ class Life3Sev extends StatelessWidget{
       appBar: AppBar(
         title: Text("성인, 중증 혜택",
           style: TextStyle(
-            fontSize: 19,
+            fontSize: 25,
           ),
         ),
+        toolbarHeight: 75.0,
         centerTitle: true,
         shape: Border(
           bottom: BorderSide(
@@ -58,7 +60,12 @@ class Life3Sev extends StatelessWidget{
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ExplainLife3sev()),
+              );
+            },
             icon: Icon(Icons.question_mark_rounded,
                 semanticLabel: "도움말"),
           ),
@@ -85,14 +92,14 @@ class Life3Sev extends StatelessWidget{
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
+                  color: Color(0xFF08436D).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
                   categories[index],
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 18,
                   ),
                 ),
               ),

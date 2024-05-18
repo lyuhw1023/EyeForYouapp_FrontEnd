@@ -6,6 +6,7 @@ import 'package:app_eyeforyou/ex_gingeupbokji.dart';
 import 'package:app_eyeforyou/ex_healthbohum.dart';
 import 'package:app_eyeforyou/ex_taxi.dart';
 import 'package:app_eyeforyou/ex_youthsupport.dart';
+import 'package:app_eyeforyou/explain_life1_sev.dart';
 import 'package:flutter/material.dart';
 
 class Life1Sev extends StatelessWidget{
@@ -13,7 +14,7 @@ class Life1Sev extends StatelessWidget{
   final List<String> categories = [
     "장애인 콜택시 \n(두리발, 자비콜, \n마마콜, 쏠라티)",
     "긴급 복지 \n생계 지원",
-    "건강보험 산정특례 등록 신청",
+    "건강보험 \n산정특례 등록 신청",
     "[바우처]\n동화야놀자",
     "[바우처]\n아동청소년심리\n치유서비스\n(우리아이가\n달라졌어요!)",
     "[바우처]\n발달재활\n서비스",
@@ -38,9 +39,10 @@ class Life1Sev extends StatelessWidget{
       appBar: AppBar(
         title: Text("영유아, 중증 혜택",
           style: TextStyle(
-            fontSize: 19,
+            fontSize: 25,
           ),
         ),
+        toolbarHeight: 75.0,
         centerTitle: true,
         shape: Border(
           bottom: BorderSide(
@@ -57,7 +59,12 @@ class Life1Sev extends StatelessWidget{
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ExplainLife1sev()),
+              );
+            },
             icon: Icon(Icons.question_mark_rounded,
                 semanticLabel: "도움말"),
           ),
@@ -84,14 +91,14 @@ class Life1Sev extends StatelessWidget{
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
+                  color: Color(0xFF08436D).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
                   categories[index],
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 18,
                   ),
                 ),
               ),

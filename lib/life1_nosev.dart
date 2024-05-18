@@ -7,6 +7,7 @@ import 'package:app_eyeforyou/ex_gingeupbokji.dart';
 import 'package:app_eyeforyou/ex_healthbohum.dart';
 import 'package:app_eyeforyou/ex_taxi.dart';
 import 'package:app_eyeforyou/ex_youthsupport.dart';
+import 'package:app_eyeforyou/explain_life1_nosev.dart';
 import 'package:flutter/material.dart';
 
 class Life1NoSev extends StatelessWidget{
@@ -39,9 +40,10 @@ class Life1NoSev extends StatelessWidget{
       appBar: AppBar(
         title: Text("영유아, 경증 혜택 ",
           style: TextStyle(
-            fontSize: 19,
+            fontSize: 25,
           ),
         ),
+        toolbarHeight: 75.0,
         centerTitle: true,
         shape: Border(
           bottom: BorderSide(
@@ -58,7 +60,12 @@ class Life1NoSev extends StatelessWidget{
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ExplainLife1Nosev()),
+              );
+            },
             icon: Icon(Icons.question_mark_rounded,
                 semanticLabel: "도움말"),
           ),
@@ -85,14 +92,14 @@ class Life1NoSev extends StatelessWidget{
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
+                  color: Color(0xFF08436D).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
                   categories[index],
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 18,
                   ),
                 ),
               ),

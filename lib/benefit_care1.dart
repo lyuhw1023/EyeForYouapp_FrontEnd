@@ -12,9 +12,10 @@ class BenefitCare1 extends StatelessWidget{
       appBar: AppBar(
         title: Text("생활 안정",
           style: TextStyle(
-            fontSize: 19,
+            fontSize: 25,
           ),
         ),
+        toolbarHeight: 75.0,
         centerTitle: true,
         shape: Border(
           bottom: BorderSide(
@@ -72,7 +73,6 @@ class BenefitCare1 extends StatelessWidget{
                 ),
               ],
             ),
-            // 필요하다면 더 많은 카드를 여기에 추가하세요.
           ],
         ),
       ),
@@ -128,7 +128,7 @@ class OptionCard extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 14, // 텍스트 크기 조절
+                fontSize: 20, // 텍스트 크기 조절
               ),
             ),
           ],
