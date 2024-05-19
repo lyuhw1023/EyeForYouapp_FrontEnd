@@ -10,7 +10,7 @@ class BenefitCare7 extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text("생활 안정",
+        title: Text("문화/여가",
           style: TextStyle(
             fontSize: 25,
           ),

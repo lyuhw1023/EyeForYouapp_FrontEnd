@@ -1,3 +1,6 @@
+import 'package:app_eyeforyou/ex_adoption.dart';
+import 'package:app_eyeforyou/ex_anerge.dart';
+import 'package:app_eyeforyou/ex_childlive.dart';
 import 'package:app_eyeforyou/ex_house.dart';
 import 'package:app_eyeforyou/explain_care4_sev.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +19,10 @@ class Care4Sev extends StatelessWidget{
   ];
 
   final List<Widget> pages = [
-    ExHouse()
+    ExHouse(),
+    ExChildLive(),
+    ExAnergy(),
+    ExAdoption(),
   ];
 
   @override
