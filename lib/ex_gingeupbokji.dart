@@ -32,7 +32,7 @@ class ExGingeupBokji extends StatelessWidget{
           automaticallyImplyLeading: false,
           title: Text('  긴급복지생계지원',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 25,
             ),
           ),
           toolbarHeight: 100.0,

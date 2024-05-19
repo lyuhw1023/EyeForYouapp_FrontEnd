@@ -32,7 +32,7 @@ class ExTaxi extends StatelessWidget{
         automaticallyImplyLeading: false,
         title: Text('장애인 콜택시\n(두리발,자비콜,마마콜,쏠라티)',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 25,
           ),
         ),
         toolbarHeight: 100.0,

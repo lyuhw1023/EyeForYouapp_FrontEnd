@@ -32,7 +32,7 @@ class ExDongHwa extends StatelessWidget{
           automaticallyImplyLeading: false,
           title: Text('  [바우처] 동화야놀자',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 25,
             ),
           ),
           toolbarHeight: 100.0,

@@ -32,7 +32,7 @@ class ExHealthBohum extends StatelessWidget{
     automaticallyImplyLeading: false,
     title: Text('  건강보험 산정특례 등록 신청',
     style: TextStyle(
-    fontSize: 18,
+    fontSize: 25,
     ),
     ),
     toolbarHeight: 100.0,

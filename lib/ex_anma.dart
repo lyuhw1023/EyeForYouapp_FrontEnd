@@ -30,9 +30,9 @@ class ExAnma extends StatelessWidget{
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Text('  [바우처] 시각장애인 안마서비스',
+          title: Text('  [바우처] \n시각장애인 안마서비스',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 25,
             ),
           ),
           toolbarHeight: 100.0,

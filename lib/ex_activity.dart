@@ -32,7 +32,7 @@ class ExActivity extends StatelessWidget{
           automaticallyImplyLeading: false,
           title: Text('  [바우처] 장애인 활동지원서비스',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 25,
             ),
           ),
           toolbarHeight: 100.0,
@@ -50,7 +50,7 @@ class ExActivity extends StatelessWidget{
             text: TextSpan(
               style: TextStyle(color: Colors.black, fontSize: 16, height: 1.5),
               children: [
-                boldText('[바우처] 장애인 활동지원서비스\n'),
+                boldText('[바우처] \n장애인 활동지원서비스\n'),
                 normalText('장애인의 자립생활을 위해 전문교육을 수료한 활동보조인을 통하여 가사지원, 외출지원, 재활치료 동행, 출·퇴근, 등 ·하교 등 일상생활 및 사회생활을 지원하는 서비스입니다\n\n'),
 
                 boldText('1. 지원대상\n'),
