@@ -19,14 +19,22 @@ class ExplainBenefitFirst extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return Scaffold(
+    return Theme(
+        data: ThemeData(
+          primaryColor: Color(0xFF08436D),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Color(0xFF08436D).withOpacity(0.3), // 투명도 조정
+          ),
+        ),
+      child: Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text('혜택 모아보기',
           style: TextStyle(
-            fontSize: 19,
+            fontSize: 25,
           ),
         ),
+        toolbarHeight: 75.0,
         centerTitle: true,
         actions: <Widget>[
           IconButton(
@@ -68,6 +76,7 @@ class ExplainBenefitFirst extends StatelessWidget{
             ],
           ),
         ),
+      ),
       ),
     );
   }
