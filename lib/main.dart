@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter/semantics.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:path_provider/path_provider.dart';
@@ -10,7 +11,6 @@ import 'dart:convert';
 import 'package:app_eyeforyou/explain_main.dart';
 import 'package:app_eyeforyou/benefit_first.dart';
 import 'package:lottie/lottie.dart';
-//import 'package:flutter_tts/flutter_tts.dart';
 
 // 사용가능한 카메라 장치의 목록을 저장하는 변수
 late List<CameraDescription> cameras;
@@ -111,6 +111,7 @@ class _CameraAppState extends State<CameraApp> with WidgetsBindingObserver {
     }
   }
 
+  //카메라 -> 사진 넘어갈 때 로딩 화면
   void showLoadingAnimation(BuildContext context, String imagePath, int width, int height) {
     showDialog(
       context: context,
@@ -118,7 +119,7 @@ class _CameraAppState extends State<CameraApp> with WidgetsBindingObserver {
       builder: (BuildContext context) {
         return Center(
           child: Lottie.asset(
-            'assets/lottie/loading.json',
+            'assets/lottie/loading2.json',
             width: 200,
             height: 200,
             fit: BoxFit.fill,
@@ -155,7 +156,7 @@ class _CameraAppState extends State<CameraApp> with WidgetsBindingObserver {
   //서버로 이미지 전송, 결과값 받기
   Future<String> sendImageToServer(File imageFile) async {
     // Ngrok을 통해 터널링된 서버의 주소 사용
-    var uri = Uri.parse('https://b06d-210-115-229-173.ngrok-free.app/predict');
+    var uri = Uri.parse('https://53ec-210-115-229-173.ngrok-free.app/predict');
     var request = http.MultipartRequest('POST', uri)
       ..files.add(await http.MultipartFile.fromPath(
         'file',
@@ -224,14 +225,17 @@ class _CameraAppState extends State<CameraApp> with WidgetsBindingObserver {
       body: _controller?.value.isInitialized ?? false
           ? GestureDetector(
               onTap: _takePicture,                  // 사용자가 화면을 탭할 때 _takePicture 함수 호출
-              child: CameraPreview(_controller!),   // 카메라 프리뷰를 보여주는 위젯
+              child: Semantics(
+                label: '카메라',
+                child: CameraPreview(_controller!),   // 카메라 프리뷰를 보여주는 위젯
+              ),   // 카메라 프리뷰를 보여주는 위젯
           )
           : Center(child: CircularProgressIndicator()), // 카메라 초기화 중이면 로딩 인디케이터 표시
     );
   }
 
 
-  //애니메이션 추가 함수
+  //애니메이션 추가
   Route _createRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => ExplainMain(),
@@ -252,18 +256,39 @@ class _CameraAppState extends State<CameraApp> with WidgetsBindingObserver {
   }
 }
 
-class ImagePreviewScreen extends StatelessWidget {
+//찍은 사진 확인
+class ImagePreviewScreen extends StatefulWidget {
   final String imagePath;
-  final String analysisResult;    // 서버로부터 받은 분석 결과
+  final String analysisResult; // 서버로부터 받은 분석 결과
   final String resolution;
 
-  ImagePreviewScreen({required this.imagePath, required this.analysisResult, required this.resolution});
+  ImagePreviewScreen(
+      {required this.imagePath, required this.analysisResult, required this.resolution});
+
+  @override
+  _ImagePreviewScreenState createState() => _ImagePreviewScreenState();
+}
+
+class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // 텍스트를 화면이 열릴 때 자동으로 읽어주기
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      SemanticsService.announce(widget.analysisResult, TextDirection.ltr);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('사진 확인'),
+        title: Text('사진 확인',
+          style: TextStyle(
+            fontSize: 25,
+          ),
+        ),
+        toolbarHeight: 75.0,
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -275,10 +300,18 @@ class ImagePreviewScreen extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: Image.file(File(imagePath)),   // 찍힌 사진을 화면에 표시
+            child: Image.file(File(widget.imagePath)),   // 찍힌 사진을 화면에 표시
           ),
-          Text('Resolution: $resolution', style: TextStyle(fontSize: 20)),
-          Text('Analysis Result: $analysisResult', style: TextStyle(fontSize: 16)),
+          //Text('Resolution: $resolution', style: TextStyle(fontSize: 20)),
+          Semantics(
+            label: 'Analysis result',
+            child: Text(
+              widget.analysisResult,
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+          SizedBox(height: 50),
+          // Text('$analysisResult', style: TextStyle(fontSize: 20)),
         ],
       ),
     );
