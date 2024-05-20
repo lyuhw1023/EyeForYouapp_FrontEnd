@@ -1,7 +1,11 @@
 import 'package:app_eyeforyou/ex_adoption.dart';
 import 'package:app_eyeforyou/ex_anerge.dart';
 import 'package:app_eyeforyou/ex_childlive.dart';
+import 'package:app_eyeforyou/ex_employ.dart';
+import 'package:app_eyeforyou/ex_employpromotion.dart';
 import 'package:app_eyeforyou/ex_house.dart';
+import 'package:app_eyeforyou/ex_job.dart';
+import 'package:app_eyeforyou/ex_tomorrowcard.dart';
 import 'package:app_eyeforyou/explain_care4_sev.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +27,10 @@ class Care4Sev extends StatelessWidget{
     ExChildLive(),
     ExAnergy(),
     ExAdoption(),
+    ExJob(),
+    ExEmploy(),
+    ExTomorrowCard(),
+    ExEmployPromotion(),
   ];
 
   @override

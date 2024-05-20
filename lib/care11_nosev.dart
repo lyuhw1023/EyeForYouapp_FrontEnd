@@ -1,3 +1,10 @@
+import 'package:app_eyeforyou/ex_busandrive.dart';
+import 'package:app_eyeforyou/ex_cyber.dart';
+import 'package:app_eyeforyou/ex_employalson.dart';
+import 'package:app_eyeforyou/ex_employpackage.dart';
+import 'package:app_eyeforyou/ex_employpromotion.dart';
+import 'package:app_eyeforyou/ex_job.dart';
+import 'package:app_eyeforyou/ex_tomorrowcard.dart';
 import 'package:app_eyeforyou/explain_care11_nosev.dart';
 import 'package:flutter/material.dart';
 
@@ -15,12 +22,14 @@ class Care11NoSev extends StatelessWidget{
   ];
 
   final List<Widget> pages = [
-    // CallTaxiServicePage(),
-    // ReaderServicePage(),
-    // EmergencyWelfarePage(),
-    // DevelopmentalRehabPage(),
-    // TelecomSupportPage(),
-    // FamilyCareProgramPage(),
+    ExJob(),
+    ExEmployPackage(),
+    ExTomorrowCard(),
+    ExEmployPromotion(),
+    ExCyber(),
+    ExEmployPackage(),
+    ExEmployAlson(),
+    ExBusanDrive()
   ];
 
   @override
