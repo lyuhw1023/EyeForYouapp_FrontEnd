@@ -30,9 +30,9 @@ class ExChildMental extends StatelessWidget{
     child: Scaffold(
     appBar: AppBar(
     automaticallyImplyLeading: false,
-    title: Text('  [바우처] 아동청소년심리치유서비스 (우리아이가 달라졌어요!)',
+    title: Text('  [바우처] \n아동청소년심리치유서비스 \n(우리아이가 달라졌어요!)',
     style: TextStyle(
-    fontSize: 18,
+    fontSize: 25,
     ),
     ),
     toolbarHeight: 100.0,

@@ -30,9 +30,9 @@ class ExInsik extends StatelessWidget{
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Text('  장애인 인식개선 활동 프로그램',
+          title: Text('  장애인 인식개선 \n활동 프로그램',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 25,
             ),
           ),
           toolbarHeight: 100.0,

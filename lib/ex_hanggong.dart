@@ -32,7 +32,7 @@ class ExHanggong extends StatelessWidget{
           automaticallyImplyLeading: false,
           title: Text('  항공 요금 할인 및 서비스',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 25,
             ),
           ),
           toolbarHeight: 100.0,

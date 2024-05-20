@@ -32,7 +32,7 @@ class ExBaldal extends StatelessWidget{
           automaticallyImplyLeading: false,
           title: Text('  [바우처] 발달재활서비스',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 25,
             ),
           ),
           toolbarHeight: 100.0,

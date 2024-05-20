@@ -32,7 +32,7 @@ class ExFamily extends StatelessWidget{
           automaticallyImplyLeading: false,
           title: Text('  장애가족역량강화프로그램',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 25,
             ),
           ),
           toolbarHeight: 100.0,

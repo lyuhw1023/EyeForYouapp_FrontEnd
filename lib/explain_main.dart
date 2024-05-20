@@ -19,14 +19,22 @@ class ExplainMain extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return Scaffold(
+    return Theme(
+        data: ThemeData(
+          primaryColor: Color(0xFF08436D),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Color(0xFF08436D).withOpacity(0.3), // 투명도 조정
+          ),
+        ),
+    child: Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text('AI 카메라 서비스',
           style: TextStyle(
-            fontSize: 19,
+            fontSize: 25,
           ),
         ),
+        toolbarHeight: 75.0,
         centerTitle: true,
         actions: <Widget>[
           IconButton(
@@ -42,16 +50,17 @@ class ExplainMain extends StatelessWidget{
           text: TextSpan(
             style: TextStyle(color: Colors.black, fontSize: 17, height: 1.3), // Default text style
             children: [
-              normalText('\n편의점 물건들을 카메라로 비추면, 물건이 무엇인 지 보이스 오버 기능을 통해 읽어줍니다.\n'),
+              normalText('\n편의점 물건들을 카메라로 찍으면, 물건이 무엇인 지 보이스 오버 기능을 통해 읽어줍니다.\n'),
               boldText('\n기능 소개\n'),
-              normalText('□ 물건 인식: 카메라를 편의점 물건에 비추면 물건의 종류를 읽어줍니다.\n\n'),
+              normalText('□ 물건 인식 : 편의점에서 카메라로 물건을 찍으면, 물건의 이름를 음성으로 알려줍니다.\n\n'),
               boldText('사용 방법\n'),
-              normalText('1. 카메라로 물건 비추기: 편의점에서 원하는 물건을 카메라로 비춥니다.\n\n'),
-              normalText('2. 물건 정보 듣기: 물건이 어떤 것인지 보이스 오버 기능을 통해 음성으로 확인하세요.\n')
+              normalText('1. 카메라로 물건 찍기 : 편의점에서 원하는 물건을 카메라로 찍으려면 화면의 아무 곳이나 누르세요.\n\n'),
+              normalText('2. 물건 정보 듣기 : 찍힌 물건의 정보를 보이스 오버 기능으로 음성을 확인하세요.\n')
             ],
           ),
         ),
       ),
+    ),
     );
   }
 }

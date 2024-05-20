@@ -30,9 +30,9 @@ class ExSeniorLongYoyang extends StatelessWidget{
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Text('  [장기요양노인] 노인장기요양 복지용구지원사업',
+          title: Text('  [장기요양노인] \n노인장기요양 복지용구지원사업',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 24,
             ),
           ),
           toolbarHeight: 100.0,

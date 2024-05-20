@@ -30,9 +30,9 @@ class ExMedical extends StatelessWidget{
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Text('  의료급여 중증질환, 희귀질환 및 중증난치질환자 지원',
+          title: Text('  의료급여 중증질환, \n희귀질환 및 중증난치질환자 지원',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 23,
             ),
           ),
           toolbarHeight: 100.0,

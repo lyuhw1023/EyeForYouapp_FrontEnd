@@ -30,9 +30,9 @@ class ExYouthSupport extends StatelessWidget{
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Text('  [바우처] 아동정서발달지원서비스',
+          title: Text('  [바우처] \n아동정서발달지원서비스',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 25,
             ),
           ),
           toolbarHeight: 100.0,
