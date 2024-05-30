@@ -1,34 +1,27 @@
-# app_eyeforyou
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# EYEFORYOU
 
 >[2024-1 한림대학교 소프트웨어캡스톤디자인(01)]
 
-<h2>너눈되 - 아이포유</h2>
+<br>
 
 ## 시각장애인을 위한 AI카메라 앱 서비스, 프론트엔드입니다.
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=EyeForYou&fontSize=90" />
-<br>
+
+
+## 팀명 : 너눈되 - 너의 눈이 되어줄게
+### 팀원
+- 박서영(콘텐츠IT전공) - 디자인
+- 양유진(빅데이터전공) - 백엔드
+- 유혜원(빅데이터전공) - 프론트엔드
+- 이강혁(빅데이터전공) - 인공지능
+- 조정덕(빅데이터전공) - 인공지능
 
 ## Tech
-<img src="https://skillicons.dev/icons?i=flutter,dcomponents&perline="/>
+<img src="https://skillicons.dev/icons?i=flutter,androidstudio,dcomponents&perline="/>
 
 ## 1. 프로젝트 명
->시각장애인을 위한 AI카메라 앱 서비스 
+시각장애인을 위한 AI카메라 앱 서비스, EYEFORYOU <br><br>
 <img src="https://github.com/nyang-code/EyeForYouapp_BackEnd/assets/85928740/bfe4453c-0367-4795-a8b6-3f8d9876efe3" width="200px"/>
 
 ## 2. 프로젝트 소개
@@ -47,17 +40,36 @@ samples, guidance on mobile development, and a full API reference.
 <img src="https://github.com/nyang-code/EyeForYouapp_BackEnd/assets/85928740/e470d690-0376-43bb-b736-5d87373800b4" width="300px"/>
 
 
-- ## 4. 프로젝트 기능 소개
+## 4. 프로젝트 기능 소개
 > 실시간 상품 인식 및 음성 안내
 - 카메라 촬영: 사용자가 홈 화면의 카메라를 터치하여 상품을 촬영합니다.
 - AI 상품 인식: 촬영된 이미지에서 AI 모델이 자동으로 상품을 인식합니다.
 - 음성 안내: 인식된 상품의 이름과 세부 정보를 음성으로 안내합니다.
 - 코너 인식: 상품이 인식되지 않은 경우, AI가 현재 위치가 스낵 코너인지 음료 코너인지를 음성으로 안내합니다.
+<img src="https://github.com/lyuhw1023/lyuhw1023/assets/52669844/11c4f423-f342-4ce6-b761-509086ceea3a" width="200px"/>
+<img src="https://github.com/lyuhw1023/lyuhw1023/assets/52669844/f720da3b-a894-40a1-953e-bb6fbe4a2b63" width="200px"/>
+<br><br>
+
 > 복지 혜택 정보 제공
 - 간편 검색: 시각 장애인들이 받을 수 있는 다양한 복지 혜택 정보를 한 곳에 모아 제공합니다.
 - 맞춤 정보 제공: 사용자는 복잡한 절차 없이 자신에게 맞는 혜택 정보를 쉽게 얻을 수 있습니다.
 - 카테고리 분류: 생애 주기, 복지 서비스, 중증 및 경증 등으로 나누어 정보를 제공하여 필요한 정보를 빠르게 찾을 수 있도록 도와줍니다.
-- 음성 안내: 혜택 정보도 보이스 오버 기능을 통해 음성으로 안내하여 시각 장애인들이 쉽게 접근할 수 있도록 합니다.
+- 음성 안내: 혜택 정보도 보이스 오버 기능을 통해 음성으로 안내하여 시각 장애인들이 쉽게 접근할 수 있도록 합니다. <br>
+<img src="https://github.com/lyuhw1023/lyuhw1023/assets/52669844/39946a94-423c-4400-a83a-630a0bce6348" width="200px"/>
+<img src="https://github.com/lyuhw1023/lyuhw1023/assets/52669844/fc01894d-a79e-4a0f-8953-cd8d553ea6d5" width="200px"/>
+<img src="https://github.com/lyuhw1023/lyuhw1023/assets/52669844/e54c839f-6d51-431b-9bb8-cd860ef9abc9" width="200px"/>
+<br>
+<img src="https://github.com/lyuhw1023/lyuhw1023/assets/52669844/8ca249cf-56a1-475a-807f-6e6436ec717c" width="200px"/>
+<img src="https://github.com/lyuhw1023/lyuhw1023/assets/52669844/18137006-faf7-43e1-88e9-9a8f765b43cc" width="200px"/>
+<img src="https://github.com/lyuhw1023/lyuhw1023/assets/52669844/39b109fc-ef2c-468d-9963-823388d2ef04" width="200px"/>
+<br><br>
+
+> 도움말 기능
+- 접근성: 모든 화면에는 도움말 기능이 포함되어 있습니다. 사용자는 언제든지 도움말 아이콘을 통해 각 화면에 대한 상세한 설명을 받을 수 있습니다.
+- 음성 안내: 모든 도움말 내용은 보이스 오버 기능을 통해 음성으로 안내됩니다. 이는 시각 장애인들이 어플리케이션을 더욱 쉽게 이해하고 사용할 수 있도록 돕습니다.
+<img src="https://github.com/lyuhw1023/lyuhw1023/assets/52669844/9c8f4a02-e107-4715-9722-75d569e12d40" width="200px"/>
+<img src="https://github.com/lyuhw1023/lyuhw1023/assets/52669844/fcb4e5a5-a3c1-4d28-ab7f-8158b58ebfb6" width="200px"/>
+<br><r>
 
 ## 5. 프로젝트 기대효과 
 > 본 프로젝트는 시각 장애인분들의 오프라인 쇼핑에서 편의성과 자립성을 높이기 위해 기획되었다.
@@ -68,6 +80,15 @@ samples, guidance on mobile development, and a full API reference.
 - 이 앱은 시각 장애인들의 삶을 보다 더 편안하게 만들기 위한 노력의 일환으로, 오프라인 쇼핑 경험을 향상시키는 데 중요한 역할을 할 것으로 기대된다.
 
 ## 6. 프로젝트 시연 영상
+> AI 카메라 시연 영상
+- https://youtube.com/shorts/tCxOXFQCtCA?feature=share
+> 중증, 경증 해택 모아보기
+- https://youtube.com/shorts/EYVD3zvKUJY
+
+## 7. 시스템 아키텍처
+클라이언트 (모바일/웹): 사용자가 상품을 촬영하고 복지 혜택 정보를 검색합니다.<br>
+서버: FastAPI 기반의 서버에서 이미지 데이터를 처리하고, AI 모델을 통해 상품을 인식하며, 결과를 클라이언트에 전달합니다.<br>
+데이터베이스: 상품 정보 및 복지 혜택 정보를 저장하고 관리합니다.
 
 
 
