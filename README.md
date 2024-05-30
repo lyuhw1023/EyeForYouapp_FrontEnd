@@ -10,12 +10,18 @@
 
 
 ## 팀명 : 너눈되 - 너의 눈이 되어줄게
-### 팀원
-- 박서영(콘텐츠IT전공) - 디자인
-- 양유진(빅데이터전공) - 백엔드
-- 유혜원(빅데이터전공) - 프론트엔드
-- 이강혁(빅데이터전공) - 인공지능
-- 조정덕(빅데이터전공) - 인공지능
+<br>
+
+## 팀원구성
+<div align="center">
+
+| **박서영** | **양유진** | **유혜원** | **이강혁** | **조정덕** |
+| :------: |  :------: | :------: | :------: | :------: |
+| <img src="https://github.com/nyang-code/EyeForYouapp_BackEnd/assets/85928740/f23f2f89-b6d1-4b06-866c-cfcab555ac41" height=150 width=150> <br/> | [<img src="https://github.com/nyang-code/EyeForYouapp_BackEnd/assets/85928740/7c5cadc5-4839-44e0-bcf3-cb03a3e523fc" height=150 width=150> <br/> @nyang-code](https://github.com/nyang-code) | [<img src="https://github.com/nyang-code/EyeForYouapp_BackEnd/assets/85928740/9cf14a62-a352-48b7-b2f5-342b28384bcf" height=150 width=150> <br/> @lyuhw1023](https://github.com/lyuhw1023) | [<img src="https://github.com/nyang-code/EyeForYouapp_BackEnd/assets/85928740/cb3e5c60-6f7a-4eaa-9f7a-06929dc1ebe0" height=150 width=150> <br/> @KH4901](https://github.com/KH4901) | [<img src="https://github.com/nyang-code/EyeForYouapp_BackEnd/assets/85928740/c39a169a-7119-43f7-815f-48080c7897d0" height=150 width=150> <br/> @JDeokk](https://github.com/JDeokk) |
+
+</div>
+
+<br>
 
 ## Tech
 <img src="https://skillicons.dev/icons?i=flutter,androidstudio,dcomponents&perline="/>
@@ -86,9 +92,9 @@
 - https://youtube.com/shorts/EYVD3zvKUJY
 
 ## 7. 시스템 아키텍처
-클라이언트 (모바일/웹): 사용자가 상품을 촬영하고 복지 혜택 정보를 검색합니다.<br>
-서버: FastAPI 기반의 서버에서 이미지 데이터를 처리하고, AI 모델을 통해 상품을 인식하며, 결과를 클라이언트에 전달합니다.<br>
-데이터베이스: 상품 정보 및 복지 혜택 정보를 저장하고 관리합니다.
+- 클라이언트 (모바일/웹): 사용자가 상품을 촬영하고 복지 혜택 정보를 검색합니다.<br>
+- 서버: FastAPI 기반의 서버에서 이미지 데이터를 처리하고, AI 모델을 통해 상품을 인식하며, 결과를 클라이언트에 전달합니다.<br>
+
 
 
 
