@@ -1,15 +1,14 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=EyeForYou&fontSize=90" />
->[2024-1 한림대학교 소프트웨어캡스톤디자인(01)]
 
-<br><br>
+> [2024-1 한림대학교 소프트웨어캡스톤디자인(01)]
 
-## 시각장애인을 위한 AI카메라 앱 서비스, EYEFORYOU
+
+# 시각장애인을 위한 AI카메라 앱 서비스, EYEFORYOU
 프론트엔드 저장소입니다.
 
 <br><br>
 
 ## 팀명 : 너눈되 - 너의 눈이 되어줄게
-<br>
 
 ## 팀원구성
 <div align="center">
