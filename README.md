@@ -88,7 +88,8 @@
 - https://youtube.com/shorts/EYVD3zvKUJY
 
 ## 7. 시스템 아키텍처
-<img src="https://github.com/user-attachments/assets/bf5db5a0-accf-46aa-bfd6-4f8ee17f5129"/>
+<img src="https://github.com/user-attachments/assets/b0c9ff95-3471-4eab-a20e-9eef8e074ab2"/>
+
 
 > 클라이언트 (모바일/웹): 사용자가 상품을 촬영하고 복지 혜택 정보를 검색합니다.<br>
 > 서버: FastAPI 기반의 서버에서 이미지 데이터를 처리하고, AI 모델을 통해 상품을 인식하며, 결과를 클라이언트에 전달합니다.<br>
