@@ -16,7 +16,7 @@
 > 기존 개별 페이지(60개+) 제거 → 동적 리스트 페이지로 통합<br>
 > 웹 크롤링 활용하여 최신 복지 혜택 데이터 자동 반영<br>
 
-[업데이트된 프로젝트 보러가기](https://github.com/lyuhw1023/EyeForYouapp_FrontEnd)
+[업데이트된 프로젝트 보러가기](https://github.com/lyuhw1023/eyeforyou_plus)
 
 <br><br>
 
